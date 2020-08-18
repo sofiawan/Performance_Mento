@@ -43,7 +43,7 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="LOOP_COUNT" elementType="Argument">
             <stringProp name="Argument.name">LOOP_COUNT</stringProp>
-            <stringProp name="Argument.value">500</stringProp>
+            <stringProp name="Argument.value">50</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="SERVER" elementType="Argument">
@@ -102,7 +102,7 @@
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
       </ThreadGroup>
       <hashTree>
         <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
@@ -207,6 +207,18 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">0</stringProp>
+          </TestAction>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
+              <stringProp name="ConstantTimer.delay">1000</stringProp>
+              <stringProp name="RandomTimer.range">100</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
@@ -308,6 +320,18 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">0</stringProp>
+          </TestAction>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
+              <stringProp name="ConstantTimer.delay">1000</stringProp>
+              <stringProp name="RandomTimer.range">100</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
         </hashTree>
         <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="POST" enabled="true">
           <boolProp name="LoopController.continue_forever">true</boolProp>
@@ -335,18 +359,6 @@
             <stringProp name="shareMode">shareMode.all</stringProp>
           </CSVDataSet>
           <hashTree/>
-          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
-            <intProp name="ActionProcessor.action">1</intProp>
-            <intProp name="ActionProcessor.target">0</intProp>
-            <stringProp name="ActionProcessor.duration">0</stringProp>
-          </TestAction>
-          <hashTree>
-            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
-              <stringProp name="ConstantTimer.delay">1000</stringProp>
-              <stringProp name="RandomTimer.range">100</stringProp>
-            </UniformRandomTimer>
-            <hashTree/>
-          </hashTree>
           <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="true">
             <stringProp name="IfController.condition">${__jexl3(${count_value} &lt; 101,)}</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
@@ -359,7 +371,7 @@
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;Id&quot;:&quot;&quot;,&quot;Title&quot;:&quot;Post FIX ${__Random(0,10000)}&quot;,&quot;Author&quot;:&quot;${username}&quot;,&quot;Content&quot;:&quot;&lt;p&gt;${__RandomString(${__Random(50,1000)},abcdefghijklmnopqrstuvwxyz,POST_TEXT)} &lt;/p&gt;&quot;,&quot;DateCreated&quot;:&quot;${FIX_DATE} ${__time(hh:mm)}&quot;,&quot;Slug&quot;:&quot;pody&quot;,&quot;Categories&quot;:[],&quot;Tags&quot;:[],&quot;Comments&quot;:&quot;&quot;,&quot;HasCommentsEnabled&quot;:true,&quot;IsPublished&quot;:true}</stringProp>
+                    <stringProp name="Argument.value">{&quot;Id&quot;:&quot;&quot;,&quot;Title&quot;:&quot;Post FIX ${__time(,curTime)}&quot;,&quot;Author&quot;:&quot;${username}&quot;,&quot;Content&quot;:&quot;&lt;p&gt;${__RandomString(${__Random(50,1000)},abcdefghijklmnopqrstuvwxyz,POST_TEXT)} &lt;/p&gt;&quot;,&quot;DateCreated&quot;:&quot;${FIX_DATE} ${__time(hh:mm)}&quot;,&quot;Slug&quot;:&quot;pody&quot;,&quot;Categories&quot;:[],&quot;Tags&quot;:[],&quot;Comments&quot;:&quot;&quot;,&quot;HasCommentsEnabled&quot;:true,&quot;IsPublished&quot;:true}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -440,7 +452,7 @@
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&quot;Id&quot;:&quot;&quot;,&quot;Title&quot;:&quot;Post RANDOM Post ${__Random(10000,20000)}&quot;,&quot;Author&quot;:&quot;Tester&quot;,&quot;Content&quot;:&quot;&lt;p&gt;${__RandomString(${__Random(50,1000)},abcdefghijklmnopqrstuvwxyz,POST_TEXT)}&lt;/p&gt;&quot;,&quot;DateCreated&quot;:&quot;${__RandomDate(,${__time(yyyy-MM-01,)},${__time(yyyy-MM-dd,)},,)} ${__time(hh:mm)}&quot;,&quot;Slug&quot;:&quot;pody&quot;,&quot;Categories&quot;:[],&quot;Tags&quot;:[],&quot;Comments&quot;:&quot;&quot;,&quot;HasCommentsEnabled&quot;:true,&quot;IsPublished&quot;:true}</stringProp>
+                    <stringProp name="Argument.value">{&quot;Id&quot;:&quot;&quot;,&quot;Title&quot;:&quot;Post RANDOM Post ${__time(,curTime)}&quot;,&quot;Author&quot;:&quot;${username}&quot;,&quot;Content&quot;:&quot;&lt;p&gt;${__RandomString(${__Random(50,1000)},abcdefghijklmnopqrstuvwxyz,POST_TEXT)}&lt;/p&gt;&quot;,&quot;DateCreated&quot;:&quot;${__RandomDate(,${__time(yyyy-MM-01,)},${__time(yyyy-MM-dd,)},,)} ${__time(hh:mm)}&quot;,&quot;Slug&quot;:&quot;pody&quot;,&quot;Categories&quot;:[],&quot;Tags&quot;:[],&quot;Comments&quot;:&quot;&quot;,&quot;HasCommentsEnabled&quot;:true,&quot;IsPublished&quot;:true}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                 </collectionProp>
@@ -509,6 +521,10 @@
               <hashTree/>
             </hashTree>
           </hashTree>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">500</stringProp>
+          </ConstantTimer>
+          <hashTree/>
         </hashTree>
         <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Logoff" enabled="true"/>
         <hashTree>
