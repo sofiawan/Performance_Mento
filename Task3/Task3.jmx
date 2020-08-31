@@ -26,13 +26,13 @@
         <stringProp name="HTTPSampler.response_timeout"></stringProp>
       </ConfigTestElement>
       <hashTree/>
-      <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+      <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="false">
         <boolProp name="clearEachIteration">false</boolProp>
         <boolProp name="useExpires">true</boolProp>
         <boolProp name="CacheManager.controlledByThread">false</boolProp>
       </CacheManager>
       <hashTree/>
-      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="false">
         <collectionProp name="CookieManager.cookies"/>
         <boolProp name="CookieManager.clearEachIteration">false</boolProp>
         <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
@@ -366,10 +366,10 @@
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">1</stringProp>
+          <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">1</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.num_threads">100</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">200</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -439,28 +439,28 @@
           </RegexExtractor>
           <hashTree/>
         </hashTree>
-        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="false">
-          <intProp name="ActionProcessor.action">1</intProp>
-          <intProp name="ActionProcessor.target">0</intProp>
-          <stringProp name="ActionProcessor.duration">0</stringProp>
-        </TestAction>
-        <hashTree>
-          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
-            <stringProp name="ConstantTimer.delay">1000</stringProp>
-            <stringProp name="RandomTimer.range">100</stringProp>
-          </UniformRandomTimer>
-          <hashTree/>
-        </hashTree>
         <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">true</boolProp>
           <stringProp name="LoopController.loops">50</stringProp>
         </LoopController>
         <hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">0</stringProp>
+          </TestAction>
+          <hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
+              <stringProp name="ConstantTimer.delay">1000</stringProp>
+              <stringProp name="RandomTimer.range">100</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
+          </hashTree>
           <RandomController guiclass="RandomControlGui" testclass="RandomController" testname="Random Controller" enabled="true">
             <intProp name="InterleaveControl.style">1</intProp>
           </RandomController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Open Contacts" enabled="false">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Open Contacts" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
               </elementProp>
@@ -505,7 +505,7 @@
               </HeaderManager>
               <hashTree/>
             </hashTree>
-            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Search by name" enabled="false"/>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Search by name" enabled="true"/>
             <hashTree>
               <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search by name" enabled="true">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
@@ -588,7 +588,7 @@
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Open large calendar" enabled="false"/>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Open large calendar" enabled="true"/>
             <hashTree>
               <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Open Large Calendar" enabled="true">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
@@ -667,7 +667,7 @@
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="HomePage" enabled="false"/>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="HomePage" enabled="true"/>
             <hashTree>
               <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HomePage" enabled="true">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
@@ -748,7 +748,7 @@
                   <collectionProp name="ModuleController.node_path">
                     <stringProp name="764597751">Test Plan</stringProp>
                     <stringProp name="764597751">Test Plan</stringProp>
-                    <stringProp name="2493632">Post</stringProp>
+                    <stringProp name="170071582">Test Fragment</stringProp>
                     <stringProp name="1300977279">If Controller</stringProp>
                   </collectionProp>
                 </ModuleController>
@@ -770,14 +770,14 @@
                   <collectionProp name="ModuleController.node_path">
                     <stringProp name="764597751">Test Plan</stringProp>
                     <stringProp name="764597751">Test Plan</stringProp>
-                    <stringProp name="2493632">Post</stringProp>
+                    <stringProp name="170071582">Test Fragment</stringProp>
                     <stringProp name="-978535005">If post</stringProp>
                   </collectionProp>
                 </ModuleController>
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Open a predefial date" enabled="false"/>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Open a predefial date" enabled="true"/>
             <hashTree>
               <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Open predefined date" enabled="true">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
@@ -869,7 +869,7 @@
                   <collectionProp name="ModuleController.node_path">
                     <stringProp name="764597751">Test Plan</stringProp>
                     <stringProp name="764597751">Test Plan</stringProp>
-                    <stringProp name="2493632">Post</stringProp>
+                    <stringProp name="170071582">Test Fragment</stringProp>
                     <stringProp name="1300977279">If Controller</stringProp>
                   </collectionProp>
                 </ModuleController>
@@ -1011,7 +1011,7 @@
                   <collectionProp name="ModuleController.node_path">
                     <stringProp name="764597751">Test Plan</stringProp>
                     <stringProp name="764597751">Test Plan</stringProp>
-                    <stringProp name="2493632">Post</stringProp>
+                    <stringProp name="170071582">Test Fragment</stringProp>
                     <stringProp name="-978535005">If post</stringProp>
                   </collectionProp>
                 </ModuleController>
