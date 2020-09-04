@@ -2767,7 +2767,7 @@ vars.put(&quot;curSize&quot;,UserList.size().toString())
             <hashTree/>
           </hashTree>
           <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="true">
-            <stringProp name="IfController.condition">${__groovy(&quot;${curSize}&quot; &lt; &quot;21&quot;)}</stringProp>
+            <stringProp name="IfController.condition">${__groovy(${curSize} &lt; 21)}</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
             <boolProp name="IfController.useExpression">true</boolProp>
           </IfController>
@@ -2848,6 +2848,18 @@ vars.put(&quot;newUserName&quot;, newUserName)</stringProp>
               </HeaderManager>
               <hashTree/>
             </hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">int counter = Integer.parseInt(props.get(&quot;UserCount&quot;));
+counter += 1 ;
+def UserCountString = String.format( &quot;%02d&quot;, counter )
+props.put(&quot;UserCount&quot;,UserCountString);
+</stringProp>
+            </JSR223Sampler>
+            <hashTree/>
           </hashTree>
         </hashTree>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
