@@ -78,7 +78,7 @@
       </CookieManager>
       <hashTree/>
       <com.blazemeter.jmeter.RandomCSVDataSetConfig guiclass="com.blazemeter.jmeter.RandomCSVDataSetConfigGui" testclass="com.blazemeter.jmeter.RandomCSVDataSetConfig" testname="bzm - Random CSV Data Set Config" enabled="true">
-        <stringProp name="filename">C:\Performance_Mento\Task4\account.csv</stringProp>
+        <stringProp name="filename">account.csv</stringProp>
         <stringProp name="fileEncoding">UTF-8</stringProp>
         <stringProp name="delimiter">,</stringProp>
         <stringProp name="variableNames">username,password</stringProp>
@@ -88,175 +88,6 @@
         <boolProp name="independentListPerThread">false</boolProp>
       </com.blazemeter.jmeter.RandomCSVDataSetConfig>
       <hashTree/>
-      <ProxyControl guiclass="ProxyControlGui" testclass="ProxyControl" testname="HTTP(S) Test Script Recorder" enabled="true">
-        <stringProp name="ProxyControlGui.port">8888</stringProp>
-        <collectionProp name="ProxyControlGui.exclude_list"/>
-        <collectionProp name="ProxyControlGui.include_list"/>
-        <boolProp name="ProxyControlGui.capture_http_headers">true</boolProp>
-        <intProp name="ProxyControlGui.grouping_mode">0</intProp>
-        <boolProp name="ProxyControlGui.add_assertion">false</boolProp>
-        <stringProp name="ProxyControlGui.sampler_type_name"></stringProp>
-        <boolProp name="ProxyControlGui.sampler_redirect_automatically">false</boolProp>
-        <boolProp name="ProxyControlGui.sampler_follow_redirects">true</boolProp>
-        <boolProp name="ProxyControlGui.use_keepalive">true</boolProp>
-        <boolProp name="ProxyControlGui.sampler_download_images">false</boolProp>
-        <intProp name="ProxyControlGui.proxy_http_sampler_naming_mode">0</intProp>
-        <stringProp name="ProxyControlGui.default_encoding"></stringProp>
-        <stringProp name="ProxyControlGui.proxy_prefix_http_sampler_name"></stringProp>
-        <stringProp name="ProxyControlGui.proxy_pause_http_sampler"></stringProp>
-        <boolProp name="ProxyControlGui.notify_child_sl_filtered">false</boolProp>
-        <boolProp name="ProxyControlGui.regex_match">false</boolProp>
-        <stringProp name="ProxyControlGui.content_type_include"></stringProp>
-        <stringProp name="ProxyControlGui.content_type_exclude"></stringProp>
-      </ProxyControl>
-      <hashTree/>
-      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Test Fragment" enabled="false"/>
-      <hashTree>
-        <RecordingController guiclass="RecordController" testclass="RecordingController" testname="Recording Controller" enabled="true"/>
-        <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/blog/api/users/processchecked/delete-106" enabled="true">
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">[{&quot;IsChecked&quot;:true,&quot;UserName&quot;:&quot;User_06&quot;,&quot;Email&quot;:&quot;User_06@epma.com&quot;,&quot;Password&quot;:null,&quot;OldPassword&quot;:null,&quot;Profile&quot;:{&quot;DisplayName&quot;:&quot;User_06&quot;,&quot;FirstName&quot;:&quot;User_06&quot;,&quot;MiddleName&quot;:&quot;&quot;,&quot;LastName&quot;:&quot;&quot;,&quot;EmailAddress&quot;:&quot;User_06@epma.com&quot;,&quot;Birthday&quot;:&quot;1/1/1900&quot;,&quot;PhotoUrl&quot;:&quot;&quot;,&quot;Private&quot;:true,&quot;PhoneMobile&quot;:&quot;&quot;,&quot;PhoneMain&quot;:&quot;&quot;,&quot;PhoneFax&quot;:&quot;&quot;,&quot;CityTown&quot;:&quot;&quot;,&quot;RegionState&quot;:&quot;&quot;,&quot;Country&quot;:&quot;&quot;,&quot;AboutMe&quot;:&quot;&quot;},&quot;Roles&quot;:[{&quot;IsChecked&quot;:false,&quot;RoleName&quot;:&quot;Editors&quot;,&quot;IsSystemRole&quot;:true}]}]</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">10.22.168.166</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">http</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-            <stringProp name="HTTPSampler.path">/blog/api/users/processchecked/delete</stringProp>
-            <stringProp name="HTTPSampler.method">PUT</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Referer" elementType="Header">
-                  <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://10.22.168.166/blog/admin/?txtEmail=</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Language" elementType="Header">
-                  <stringProp name="Header.name">Accept-Language</stringProp>
-                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
-                </elementProp>
-                <elementProp name="Origin" elementType="Header">
-                  <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">http://10.22.168.166</stringProp>
-                </elementProp>
-                <elementProp name="Content-Type" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Encoding" elementType="Header">
-                  <stringProp name="Header.name">Accept-Encoding</stringProp>
-                  <stringProp name="Header.value">gzip, deflate</stringProp>
-                </elementProp>
-                <elementProp name="User-Agent" elementType="Header">
-                  <stringProp name="Header.name">User-Agent</stringProp>
-                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:79.0) Gecko/20100101 Firefox/79.0</stringProp>
-                </elementProp>
-                <elementProp name="Accept" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
-                </elementProp>
-                <elementProp name="x-blog-instance" elementType="Header">
-                  <stringProp name="Header.name">x-blog-instance</stringProp>
-                  <stringProp name="Header.value">96d5b379-7e1d-4dac-a6ba-1e50db561b04</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/blog/api/users-107" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="filter" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">filter</stringProp>
-                  <stringProp name="Argument.value">1+%3D%3D+1</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                </elementProp>
-                <elementProp name="order" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">order</stringProp>
-                  <stringProp name="Argument.value">UserName</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                </elementProp>
-                <elementProp name="skip" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">skip</stringProp>
-                  <stringProp name="Argument.value">0</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                </elementProp>
-                <elementProp name="take" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">take</stringProp>
-                  <stringProp name="Argument.value">0</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">10.22.168.166</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">http</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/blog/api/users</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Referer" elementType="Header">
-                  <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">http://10.22.168.166/blog/admin/?txtEmail=</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Language" elementType="Header">
-                  <stringProp name="Header.name">Accept-Language</stringProp>
-                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Encoding" elementType="Header">
-                  <stringProp name="Header.name">Accept-Encoding</stringProp>
-                  <stringProp name="Header.value">gzip, deflate</stringProp>
-                </elementProp>
-                <elementProp name="User-Agent" elementType="Header">
-                  <stringProp name="Header.name">User-Agent</stringProp>
-                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:79.0) Gecko/20100101 Firefox/79.0</stringProp>
-                </elementProp>
-                <elementProp name="Accept" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
-                </elementProp>
-                <elementProp name="x-blog-instance" elementType="Header">
-                  <stringProp name="Header.name">x-blog-instance</stringProp>
-                  <stringProp name="Header.value">96d5b379-7e1d-4dac-a6ba-1e50db561b04</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-          </hashTree>
-        </hashTree>
-      </hashTree>
       <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Test Fragment" enabled="false"/>
       <hashTree>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Add User" enabled="true">
@@ -264,7 +95,7 @@
           <boolProp name="TransactionController.parent">true</boolProp>
         </TransactionController>
         <hashTree>
-          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler" enabled="true">
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Generate New UserName" enabled="true">
             <stringProp name="scriptLanguage">groovy</stringProp>
             <stringProp name="parameters"></stringProp>
             <stringProp name="filename"></stringProp>
@@ -340,7 +171,7 @@ vars.put(&quot;newUserName&quot;, newUserName)</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler" enabled="true">
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler" enabled="false">
             <stringProp name="scriptLanguage">groovy</stringProp>
             <stringProp name="parameters"></stringProp>
             <stringProp name="filename"></stringProp>
@@ -494,7 +325,7 @@ props.put(&quot;UserCount&quot;,UserCountString);
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Get Current User List" enabled="true">
               <stringProp name="cacheKey">true</stringProp>
               <stringProp name="filename"></stringProp>
               <stringProp name="parameters"></stringProp>
@@ -516,11 +347,17 @@ for(user in AllUserList){
 	}
 }
 vars.put(&quot;UserList&quot;, UserList.sort().toString())
-def curUserName = UserList.get(UserList.size()-1)
-def curNumber = curUserName.split(&apos;_&apos;)[1]
-vars.put(&quot;curNumber&quot;,curNumber)
-vars.put(&quot;curSize&quot;,UserList.size().toString())
-vars.put(&quot;curUserName&quot;, curUserName)
+if(UserList.size()&gt;0){
+	def curUserName = UserList.get(UserList.size()-1)
+	def curNumber = curUserName.split(&apos;_&apos;)[1]
+	vars.put(&quot;curNumber&quot;,curNumber)
+	vars.put(&quot;curSize&quot;,UserList.size().toString())
+	vars.put(&quot;curUserName&quot;, curUserName)
+}else{
+	vars.put(&quot;curNumber&quot;,&quot;0&quot;)
+	vars.put(&quot;curSize&quot;,&quot;0&quot;)
+	vars.put(&quot;curUserName&quot;, &quot;User_01&quot;)
+	}
 
 </stringProp>
               <stringProp name="scriptLanguage">groovy</stringProp>
@@ -540,7 +377,7 @@ vars.put(&quot;curUserName&quot;, curUserName)
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
       </ThreadGroup>
       <hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Home Page" enabled="true">
@@ -593,7 +430,7 @@ vars.put(&quot;curUserName&quot;, curUserName)
           <boolProp name="TransactionController.parent">true</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/blog/Account" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Click Login" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
@@ -765,7 +602,7 @@ vars.put(&quot;curUserName&quot;, curUserName)
             <hashTree/>
           </hashTree>
         </hashTree>
-        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="false">
           <boolProp name="displayJMeterProperties">false</boolProp>
           <boolProp name="displayJMeterVariables">true</boolProp>
           <boolProp name="displaySystemProperties">false</boolProp>
@@ -783,8 +620,8 @@ vars.put(&quot;curUserName&quot;, curUserName)
           </TestAction>
           <hashTree>
             <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
-              <stringProp name="ConstantTimer.delay">1000</stringProp>
-              <stringProp name="RandomTimer.range">100</stringProp>
+              <stringProp name="ConstantTimer.delay">3000</stringProp>
+              <stringProp name="RandomTimer.range">1000</stringProp>
             </UniformRandomTimer>
             <hashTree/>
           </hashTree>
@@ -844,8 +681,8 @@ vars.put(&quot;curUserName&quot;, curUserName)
           </TestAction>
           <hashTree>
             <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
-              <stringProp name="ConstantTimer.delay">1000</stringProp>
-              <stringProp name="RandomTimer.range">100</stringProp>
+              <stringProp name="ConstantTimer.delay">3000</stringProp>
+              <stringProp name="RandomTimer.range">1000</stringProp>
             </UniformRandomTimer>
             <hashTree/>
           </hashTree>
@@ -995,7 +832,7 @@ vars.put(&quot;curUserName&quot;, curUserName)
             </UniformRandomTimer>
             <hashTree/>
           </hashTree>
-          <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="false">
             <boolProp name="displayJMeterProperties">false</boolProp>
             <boolProp name="displayJMeterVariables">true</boolProp>
             <boolProp name="displaySystemProperties">false</boolProp>
@@ -1039,7 +876,7 @@ vars.put(&quot;curUserName&quot;, curUserName)
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -1076,7 +913,7 @@ vars.put(&quot;curUserName&quot;, curUserName)
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="StatGraphVisualizer" testclass="ResultCollector" testname="Aggregate Graph" enabled="true">
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -1169,6 +1006,18 @@ vars.put(&quot;curUserName&quot;, curUserName)
               <stringProp name="-1993889503">Memory</stringProp>
               <stringProp name="0"></stringProp>
             </collectionProp>
+            <collectionProp name="-560775669">
+              <stringProp name="1675587811">${SERVER}</stringProp>
+              <stringProp name="1600768">4444</stringProp>
+              <stringProp name="2112896831">Disks I/O</stringProp>
+              <stringProp name="0"></stringProp>
+            </collectionProp>
+            <collectionProp name="1957522392">
+              <stringProp name="1675587811">${SERVER}</stringProp>
+              <stringProp name="1600768">4444</stringProp>
+              <stringProp name="-274342153">Network I/O</stringProp>
+              <stringProp name="0"></stringProp>
+            </collectionProp>
           </collectionProp>
         </kg.apc.jmeter.perfmon.PerfMonCollector>
         <hashTree/>
@@ -1220,11 +1069,13 @@ vars.put(&quot;curUserName&quot;, curUserName)
               <stringProp name="-243013315">jp@gc - Response Times Over Time</stringProp>
               <stringProp name="1267279877">jp@gc - Transactions per Second</stringProp>
               <stringProp name="1267279877">jp@gc - Transactions per Second</stringProp>
+              <stringProp name="245914917">jp@gc - Active Threads Over Time</stringProp>
             </collectionProp>
             <collectionProp name="">
               <stringProp name="-1549391110">Overall Response Times</stringProp>
               <stringProp name="117711132">Successful Transactions per Second</stringProp>
               <stringProp name="-1517411905">Failed Transactions per Second</stringProp>
+              <stringProp name="2133254370">Overall Active Threads</stringProp>
             </collectionProp>
           </collectionProp>
         </kg.apc.jmeter.vizualizers.CompositeResultCollector>
