@@ -100,11 +100,17 @@
             <stringProp name="parameters"></stringProp>
             <stringProp name="filename"></stringProp>
             <stringProp name="cacheKey">true</stringProp>
-            <stringProp name="script">def currentNumber = vars.get(&quot;curNumber&quot;)
+            <stringProp name="script">def currentNumber = props.get(&quot;curNumber&quot;)
+def currentSize = props.get(&quot;curSize&quot;)
 int userNumber = Integer.parseInt(currentNumber) + 1
+int userSize = Integer.parseInt(currentSize) + 1
+
 def strUserNumber = String.format( &quot;%02d&quot;, userNumber)
 def newUserName = &quot;User_&quot;+ strUserNumber
-vars.put(&quot;newUserName&quot;, newUserName)</stringProp>
+vars.put(&quot;newUserName&quot;, newUserName)
+
+props.put(&quot;curNumber&quot;,String.format( &quot;%02d&quot;, userNumber))
+props.put(&quot;curSize&quot;,userSize.toString())</stringProp>
           </JSR223Sampler>
           <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ADD USER " enabled="true">
@@ -171,24 +177,30 @@ vars.put(&quot;newUserName&quot;, newUserName)</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler" enabled="false">
-            <stringProp name="scriptLanguage">groovy</stringProp>
-            <stringProp name="parameters"></stringProp>
-            <stringProp name="filename"></stringProp>
-            <stringProp name="cacheKey">true</stringProp>
-            <stringProp name="script">int counter = Integer.parseInt(props.get(&quot;UserCount&quot;));
-counter += 1 ;
-def UserCountString = String.format( &quot;%02d&quot;, counter )
-props.put(&quot;UserCount&quot;,UserCountString);
-</stringProp>
-          </JSR223Sampler>
-          <hashTree/>
         </hashTree>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Remove User" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
           <boolProp name="TransactionController.parent">true</boolProp>
         </TransactionController>
         <hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Get The last UserName to delete" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">def currentNumber = props.get(&quot;curNumber&quot;)
+def currentSize = props.get(&quot;curSize&quot;)
+int userNumber = Integer.parseInt(currentNumber) -1
+
+def strUserNumber = String.format( &quot;%02d&quot;, Integer.parseInt(currentNumber))
+def curUserName = &quot;User_&quot;+ strUserNumber
+vars.put(&quot;curUserName&quot;, curUserName)
+
+int userSize = Integer.parseInt(currentSize) -1
+props.put(&quot;curNumber&quot;,String.format( &quot;%02d&quot;, userNumber))
+props.put(&quot;curSize&quot;,userSize.toString())</stringProp>
+          </JSR223Sampler>
+          <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DELETE USER" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -350,13 +362,13 @@ vars.put(&quot;UserList&quot;, UserList.sort().toString())
 if(UserList.size()&gt;0){
 	def curUserName = UserList.get(UserList.size()-1)
 	def curNumber = curUserName.split(&apos;_&apos;)[1]
-	vars.put(&quot;curNumber&quot;,curNumber)
-	vars.put(&quot;curSize&quot;,UserList.size().toString())
-	vars.put(&quot;curUserName&quot;, curUserName)
+	props.put(&quot;curNumber&quot;,curNumber)
+	props.put(&quot;curSize&quot;,UserList.size().toString())
+	//vars.put(&quot;curUserName&quot;, curUserName)
 }else{
-	vars.put(&quot;curNumber&quot;,&quot;0&quot;)
-	vars.put(&quot;curSize&quot;,&quot;0&quot;)
-	vars.put(&quot;curUserName&quot;, &quot;User_01&quot;)
+	props.put(&quot;curNumber&quot;,&quot;0&quot;)
+	props.put(&quot;curSize&quot;,&quot;0&quot;)
+	//vars.put(&quot;curUserName&quot;, &quot;User_01&quot;)
 	}
 
 </stringProp>
@@ -602,12 +614,6 @@ if(UserList.size()&gt;0){
             <hashTree/>
           </hashTree>
         </hashTree>
-        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="false">
-          <boolProp name="displayJMeterProperties">false</boolProp>
-          <boolProp name="displayJMeterVariables">true</boolProp>
-          <boolProp name="displaySystemProperties">false</boolProp>
-        </DebugSampler>
-        <hashTree/>
         <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">true</boolProp>
           <stringProp name="LoopController.loops">10</stringProp>
@@ -707,21 +713,12 @@ if(UserList.size()&gt;0){
             </UniformRandomTimer>
             <hashTree/>
           </hashTree>
-          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="true">
-            <stringProp name="IfController.condition">${__groovy(${curSize} &lt; 10)}</stringProp>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If user number &lt; 10" enabled="true">
+            <stringProp name="IfController.condition">${__groovy(${__P(curSize)} &lt; 10)}</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
             <boolProp name="IfController.useExpression">true</boolProp>
           </IfController>
           <hashTree>
-            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Module Controller" enabled="true">
-              <collectionProp name="ModuleController.node_path">
-                <stringProp name="764597751">Test Plan</stringProp>
-                <stringProp name="764597751">Test Plan</stringProp>
-                <stringProp name="170071582">Test Fragment</stringProp>
-                <stringProp name="-1201594519">Get User List</stringProp>
-              </collectionProp>
-            </ModuleController>
-            <hashTree/>
             <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Module Controller" enabled="true">
               <collectionProp name="ModuleController.node_path">
                 <stringProp name="764597751">Test Plan</stringProp>
@@ -732,33 +729,12 @@ if(UserList.size()&gt;0){
             </ModuleController>
             <hashTree/>
           </hashTree>
-          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
-            <intProp name="ActionProcessor.action">1</intProp>
-            <intProp name="ActionProcessor.target">0</intProp>
-            <stringProp name="ActionProcessor.duration">0</stringProp>
-          </TestAction>
-          <hashTree>
-            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
-              <stringProp name="ConstantTimer.delay">3000</stringProp>
-              <stringProp name="RandomTimer.range">1000</stringProp>
-            </UniformRandomTimer>
-            <hashTree/>
-          </hashTree>
-          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="true">
-            <stringProp name="IfController.condition">${__groovy(${curSize} &gt; 20)}</stringProp>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If user number &gt; 20" enabled="true">
+            <stringProp name="IfController.condition">${__groovy(${__P(curSize)} &gt; 20)}</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
             <boolProp name="IfController.useExpression">true</boolProp>
           </IfController>
           <hashTree>
-            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Module Controller" enabled="true">
-              <collectionProp name="ModuleController.node_path">
-                <stringProp name="764597751">Test Plan</stringProp>
-                <stringProp name="764597751">Test Plan</stringProp>
-                <stringProp name="170071582">Test Fragment</stringProp>
-                <stringProp name="-1201594519">Get User List</stringProp>
-              </collectionProp>
-            </ModuleController>
-            <hashTree/>
             <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Module Controller" enabled="true">
               <collectionProp name="ModuleController.node_path">
                 <stringProp name="764597751">Test Plan</stringProp>
@@ -769,33 +745,12 @@ if(UserList.size()&gt;0){
             </ModuleController>
             <hashTree/>
           </hashTree>
-          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
-            <intProp name="ActionProcessor.action">1</intProp>
-            <intProp name="ActionProcessor.target">0</intProp>
-            <stringProp name="ActionProcessor.duration">0</stringProp>
-          </TestAction>
-          <hashTree>
-            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
-              <stringProp name="ConstantTimer.delay">3000</stringProp>
-              <stringProp name="RandomTimer.range">1000</stringProp>
-            </UniformRandomTimer>
-            <hashTree/>
-          </hashTree>
-          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="true">
-            <stringProp name="IfController.condition">${__groovy(${curSize} &gt;= 10 &amp;&amp;  ${curSize} &lt;= 20)}</stringProp>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If user number between 10 and 20" enabled="true">
+            <stringProp name="IfController.condition">${__groovy(${__P(curSize)} &gt;= 10 &amp;&amp;  ${__P(curSize)} &lt;= 20 )}</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
             <boolProp name="IfController.useExpression">true</boolProp>
           </IfController>
           <hashTree>
-            <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="Module Controller" enabled="true">
-              <collectionProp name="ModuleController.node_path">
-                <stringProp name="764597751">Test Plan</stringProp>
-                <stringProp name="764597751">Test Plan</stringProp>
-                <stringProp name="170071582">Test Fragment</stringProp>
-                <stringProp name="-1201594519">Get User List</stringProp>
-              </collectionProp>
-            </ModuleController>
-            <hashTree/>
             <RandomController guiclass="RandomControlGui" testclass="RandomController" testname="Random Controller" enabled="true">
               <intProp name="InterleaveControl.style">1</intProp>
             </RandomController>
@@ -820,24 +775,6 @@ if(UserList.size()&gt;0){
               <hashTree/>
             </hashTree>
           </hashTree>
-          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think Time" enabled="true">
-            <intProp name="ActionProcessor.action">1</intProp>
-            <intProp name="ActionProcessor.target">0</intProp>
-            <stringProp name="ActionProcessor.duration">0</stringProp>
-          </TestAction>
-          <hashTree>
-            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Pause" enabled="true">
-              <stringProp name="ConstantTimer.delay">3000</stringProp>
-              <stringProp name="RandomTimer.range">1000</stringProp>
-            </UniformRandomTimer>
-            <hashTree/>
-          </hashTree>
-          <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="false">
-            <boolProp name="displayJMeterProperties">false</boolProp>
-            <boolProp name="displayJMeterVariables">true</boolProp>
-            <boolProp name="displaySystemProperties">false</boolProp>
-          </DebugSampler>
-          <hashTree/>
         </hashTree>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
