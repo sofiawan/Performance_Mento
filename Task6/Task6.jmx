@@ -668,8 +668,8 @@ if(date != &quot;NULL&quot;){
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">200</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">400</stringProp>
+        <stringProp name="ThreadGroup.num_threads">400</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">800</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -769,7 +769,7 @@ SampleResult.setIgnore();</stringProp>
                 <stringProp name="parameters"></stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="cacheKey">true</stringProp>
-                <stringProp name="script">def random_date = &quot;${__RandomDate(yyyy/MM/dd,${__time(yyyy/08/dd,)},${__time(yyyy/MM/dd,)},,)}&quot;
+                <stringProp name="script">def random_date = &quot;${__RandomDate(yyyy/MM/dd,${__time(yyyy/MM/01,)},${__time(yyyy/MM/dd,)},,)}&quot;
 vars.put(&quot;DATE&quot;,random_date)</stringProp>
               </JSR223Sampler>
               <hashTree/>
@@ -846,7 +846,7 @@ vars.put(&quot;DATE&quot;,random_date)</stringProp>
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="HomePage" enabled="true">
+            <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Home Page" enabled="true">
               <intProp name="ThroughputController.style">1</intProp>
               <boolProp name="ThroughputController.perThread">false</boolProp>
               <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -1653,18 +1653,6 @@ vars.put(&quot;DATE&quot;,random_date)</stringProp>
               <stringProp name="1675587811">${SERVER}</stringProp>
               <stringProp name="1600768">4444</stringProp>
               <stringProp name="-1993889503">Memory</stringProp>
-              <stringProp name="0"></stringProp>
-            </collectionProp>
-            <collectionProp name="1957522392">
-              <stringProp name="1675587811">${SERVER}</stringProp>
-              <stringProp name="1600768">4444</stringProp>
-              <stringProp name="-274342153">Network I/O</stringProp>
-              <stringProp name="0"></stringProp>
-            </collectionProp>
-            <collectionProp name="-560775669">
-              <stringProp name="1675587811">${SERVER}</stringProp>
-              <stringProp name="1600768">4444</stringProp>
-              <stringProp name="2112896831">Disks I/O</stringProp>
               <stringProp name="0"></stringProp>
             </collectionProp>
           </collectionProp>
